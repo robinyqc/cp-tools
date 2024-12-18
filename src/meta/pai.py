@@ -1,5 +1,3 @@
-# Will be rewrite in the future.
-
 import os
 import sys
 import subprocess
@@ -17,10 +15,8 @@ def parse_time_limit(tl):
 
 def locate_file(file):
     """Locate the file by searching in the current directory and system path."""
-    if os.path.isabs(file):
-        return file
-    if os.path.exists(os.path.join(os.getcwd(), file)):
-        return os.path.join(os.getcwd(), file)
+    if os.path.exists(file):
+        return os.path.abspath(file)
     path = shutil.which(file)
     if path:
         return path
